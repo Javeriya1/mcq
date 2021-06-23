@@ -1,0 +1,88 @@
+{
+  "gameType": "MCQGame",
+  "templateId": 0,
+  "gameData": {
+    "background": "background.png",
+    "heading": "Color the circle below the correct word.",
+    "isRandonmize": true,
+    "items": [
+      { 
+        "image": "ant.png", "choices": [
+          { "choice": "ant", "isCorrect": true },
+          { "choice": "cat" },
+          { "choice": "bat"},
+          { "choice": "horse","isCorrect": false}
+        ]
+      },
+      { 
+        "image": "horse.png", "choices": [
+          { "choice": "bat"},
+          { "choice": "horse","isCorrect": true},
+          { "choice": "dog", "isCorrect": false },
+          { "choice": "cat" }
+        ]
+      },
+      { 
+        "image": "dog.png", "choices": [
+          { "choice": "dog", "isCorrect": true },
+          { "choice": "cat" },
+          { "choice": "egg" ,"isCorrect": false },
+          { "choice": "goat"}
+        ]
+      },
+      { 
+        "image": "goat.png", "choices": [
+          { "choice": "dog" },
+          { "choice": "goat", "isCorrect": true },
+          { "choice": "ink", "isCorrect": false},
+          { "choice": "ball" }
+          
+        ]
+      },
+      { 
+        "image": "car.png", "choices": [
+          { "choice": "car" ,"isCorrect": true },
+          { "choice": "cat"},
+          { "choice": "egg" },
+          { "choice": "fan", "isCorrect": false }
+        ]
+      },
+      { 
+        "image": "ink.png", "choices": [     
+          { "choice": "ball" },
+          { "choice": "goat", "isCorrect": false },
+          { "choice": "fan" },
+          { "choice": "ink", "isCorrect": true }
+        ]
+      },
+      { 
+        "image": "fan.png", "choices": [
+          { "choice": "egg" },
+          
+          { "choice": "ball", "isCorrect": false },
+          { "choice": "ink" },
+          { "choice": "fan", "isCorrect": true }
+          
+        ]
+      },
+      { 
+        "image": "football.png", "choices": [
+          { "choice": "ball", "isCorrect": true },
+          { "choice": "fan" },
+          { "choice": "car"},
+          { "choice": "cat"}
+        ]
+      },
+      { 
+        "image": "egg.png", "choices": [
+          { "choice": "ink" },
+          { "choice": "egg", "isCorrect": true },
+          { "choice": "dog" },
+          { "choice": "goat" }
+          
+        ]
+      }
+
+    ]
+  }
+}
