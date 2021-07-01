@@ -25,7 +25,7 @@ class Play extends Phaser.Scene {
 
         this.textStart = { x: 0, y: 0 };
 
-        this.gapBetweenText = 40;
+        this.gapBetweenText = 42;
 
 
     }
@@ -76,6 +76,7 @@ class Play extends Phaser.Scene {
         this.add.image(40, 20, "logo").setOrigin(0).setScale(1.5);
         this.add.text(20, 100, this.json.gameData.heading, this.fontOptions);
         this.particles = this.add.particles('spark');
+        this.particlesBackground = this.add.particles('spark').setDepth(1);
         this.createMenuItems();
     }
 
@@ -178,19 +179,21 @@ class Play extends Phaser.Scene {
                 }
                 currentChoice.circle.data.values.isSelected = true;
                 if (isMatch == true) {
+           
                     menuItem.isComplete = true;
                     currentChoice.circle.setFillStyle(0x03680d);
                     this.clearOtherCircles(choiceIndex, choices);
                     this.positionToCenter(choiceIndex, choices, menuItem)
 
                 } else {
+                   
                     currentChoice.circle.setFillStyle(0xc6041a);
                     this.makeNormalColor(choiceIndex, choices, menuItem);
 
                 }
 
                 this.matchAllItems(menuItem);
-                console.log(menuItem);
+                
 
             });
         }
@@ -231,7 +234,7 @@ class Play extends Phaser.Scene {
             targets: displayText,
             ease: 'Power1',
             alpha: 0,
-            duration: 3000,
+            duration: 1000,
             onComplete: () => {
                 displayText.destroy();
             }
@@ -241,19 +244,19 @@ class Play extends Phaser.Scene {
         this.tweens.add({
             targets: menuItem.image,
             scale: { from: 1, to: 1.1 },
-            ease: 'Sine.easeInOut',
+            ease: 'Power0',
             duration: 300,
             delay: count * 50,
-            repeat: 2,
+            repeat: 0,
             yoyo: true
 
         });
     }
 
     positionToCenter(choiceIndex, choices, menuItem) {
-
+ 
         for (let i = 0; i < choices.length; i++) {
-            if (choiceIndex == i) {
+            if (choiceIndex == i) {           
                 this.tweens.add({
                     targets: choices[i].text,
                     x: menuItem.image.x,
@@ -312,16 +315,19 @@ class Play extends Phaser.Scene {
         }
         if (isComplete) {
             this.time.delayedCall(1500, () => {
-                const displayText = this.add.text(this.scale.width / 2, this.scale.height / 2, 'YOU WON!', this.fontOptions).setOrigin(0.5);;
+                const displayText = this.add.text(this.scale.width / 2, this.scale.height / 2 -10, 'YOU WON!', this.fontOptions).setOrigin(0.5);
+                var r4 = this.add.rectangle(this.scale.width / 2, this.scale.height / 2 -10, 190,60, 0xf4a460);
+                displayText.setDepth(1);
 
                 this.tweens.add({
                     targets: displayText,
+                    ease: 'Power2',
                     scale: 2,
-                    duration: 5000,
-                    yoyo: -1
+                    duration: 1500,
+                    
                 })
 
-                const emitterBackground = this.particles.createEmitter({
+                const emitterBackground = this.particlesBackground.createEmitter({
                     on: false,
                     delay: 1000,
                     x: this.background.x + 250,
@@ -335,6 +341,7 @@ class Play extends Phaser.Scene {
                 });
 
                 emitterBackground.start();
+               
 
                 this.time.delayedCall(5000, () => {
 

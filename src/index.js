@@ -3,7 +3,7 @@ import Phaser from "phaser";
 import PlayScene from './scenes/Play';
 
 const WIDTH = 540;
-const HEIGHT = 960;
+const HEIGHT = 700;
 
 const SHARED_CONFIG = {
   width: WIDTH,
